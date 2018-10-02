@@ -1,6 +1,5 @@
 package com.example.myapplication.order;
 
-import com.example.myapplication.customer.CustomerController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +27,8 @@ public class OrderController {
     }
 
     @RequestMapping(value="/", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
-    public List<Order> getOrders() { return service.getOrders(); }
+    public List<Order> getOrders() {
+        LOGGER.info("getOrders({})");
+        return service.getOrders();
+    }
 }
