@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Repository
-public class ProductRepository {
+class ProductRepository {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ProductRepository.class.getName());
 

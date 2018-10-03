@@ -8,12 +8,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductService {
+class ProductService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ProductService.class.getName());
 
-    @Autowired
     private ProductRepository repository;
+
+    @Autowired
+    ProductService(ProductRepository repository) {
+        super();
+        this.repository = repository;
+    }
 
     Product getProduct(int id) {
         LOGGER.info("getProduct({})", id);
@@ -21,7 +26,7 @@ public class ProductService {
     }
 
     List<Product> getProducts() {
-        LOGGER.info("getProducts()");
+        LOGGER.info("getProductList()");
         return repository.getProducts();
     }
 }

@@ -8,12 +8,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderService {
+class OrderService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(OrderService.class.getName());
 
-    @Autowired
     private OrderRepository repository;
+
+    @Autowired
+    OrderService(OrderRepository repository) {
+        super();
+        this.repository = repository;
+    }
 
     Order getOrder(int id) {
         LOGGER.info("getOrder({})", id);

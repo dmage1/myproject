@@ -12,8 +12,13 @@ class CustomerService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CustomerService.class.getName());
 
-    @Autowired
     private CustomerRepository repository;
+
+    @Autowired
+    CustomerService(CustomerRepository repository) {
+        super();
+        this.repository = repository;
+    }
 
     Customer getCustomer(int id) {
         LOGGER.info("getCustomer({})", id);

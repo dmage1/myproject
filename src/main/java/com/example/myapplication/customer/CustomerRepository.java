@@ -1,5 +1,6 @@
 package com.example.myapplication.customer;
 
+import com.google.common.base.Preconditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,9 @@ public class CustomerRepository {
 
     Customer getCustomer(int id) {
         LOGGER.info("getCustomer({})", id);
+
+        Preconditions.checkArgument(id >= 0 && id <= CUSTOMERS.length - 1, "Invalid Customer Id [%s]", id);
+
         return CUSTOMERS[id];
     }
 
