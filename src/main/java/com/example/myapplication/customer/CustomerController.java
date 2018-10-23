@@ -4,11 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,5 +29,14 @@ public class CustomerController {
     @RequestMapping(value="/", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
     public List<Customer> getCustomers() {
         LOGGER.info("getCustomers()");
-        return service.getCustomers(); }
+        return service.getCustomers();
+    }
+
+    // http://localhost:8080/customers/
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public Customer create(@Valid @RequestBody Customer customer) {
+        LOGGER.info("create()");
+
+        return new Customer();
+    }
 }
