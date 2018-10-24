@@ -18,6 +18,10 @@ public class Product {
     private BigDecimal listPrice;
     private BigDecimal minPrice;
 
+    Product() {
+        super();
+    }
+
     Product(int id, String name, String description, String category, String status, BigDecimal listPrice, BigDecimal minPrice) {
         this.id = id;
         this.name = name;

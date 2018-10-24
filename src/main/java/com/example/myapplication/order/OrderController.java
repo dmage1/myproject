@@ -20,15 +20,19 @@ public class OrderController {
     @Autowired
     private OrderService service;
 
+    // Aggregate root - http://localhost:8080/orders
+
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Order> getOrders() {
+        LOGGER.info("getOrders({})");
+        return service.getOrders();
+    }
+
+    // Single item
+
     @RequestMapping(value="/{id}", method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
     public Order getOrder(@PathVariable int id) {
         LOGGER.info("getOrder({})", id);
         return service.getOrder(id);
-    }
-
-    @RequestMapping(value="/", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
-    public List<Order> getOrders() {
-        LOGGER.info("getOrders({})");
-        return service.getOrders();
     }
 }

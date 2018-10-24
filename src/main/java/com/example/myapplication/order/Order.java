@@ -23,6 +23,10 @@ public class Order {
 
     private List<Product> purchasedProducts;
 
+    Order() {
+        super();
+    }
+
     Order(int id, Date orderDate, String orderMode, String orderStatus, BigDecimal orderTotal, Customer customer, List<Product> purchasedProducts) {
         this.id = id;
         this.orderDate = orderDate;

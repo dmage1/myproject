@@ -27,6 +27,7 @@ public class Customer {
     private BigDecimal creditLimit;
 
     Customer() {
+        super();
     }
 
     Customer(int id, String firstName, String lastName, String gender, Date dob, String address, String city, String state, String postCode, String phone, String email, BigDecimal creditLimit) {
@@ -52,91 +53,91 @@ public class Customer {
         this.id = id;
     }
 
-    String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    void setLastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    String getGender() {
+    public String getGender() {
         return gender;
     }
 
-    void setGender(String gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    Date getDob() {
+    public Date getDob() {
         return dob;
     }
 
-    void setDob(Date dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
 
-    String getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    void setAddress(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    String getCity() {
+    public String getCity() {
         return city;
     }
 
-    void setCity(String city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
-    String getState() {
+    public String getState() {
         return state;
     }
 
-    void setState(String state) {
+    public void setState(String state) {
         this.state = state;
     }
 
-    String getPostCode() {
+    public String getPostCode() {
         return postCode;
     }
 
-    void setPostCode(String postCode) {
+    public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
 
-    String getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    void setPhone(String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    void setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    BigDecimal getCreditLimit() {
+    public BigDecimal getCreditLimit() {
         return creditLimit;
     }
 
-    void setCreditLimit(BigDecimal creditLimit) {
+    public void setCreditLimit(BigDecimal creditLimit) {
         this.creditLimit = creditLimit;
     }
 

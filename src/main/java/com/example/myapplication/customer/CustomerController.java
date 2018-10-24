@@ -3,14 +3,11 @@ package com.example.myapplication.customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/customers")
 public class CustomerController {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CustomerController.class.getName());
@@ -18,25 +15,25 @@ public class CustomerController {
     @Autowired
     private CustomerService service;
 
-    // http://localhost:8080/customers/1
-    @RequestMapping(value="/{id}", method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
-    public Customer getCustomer(@PathVariable int id) {
-        LOGGER.info("getCustomer({})", id);
-        return service.getCustomer(id);
-    }
+    // Aggregate root - http://localhost:8080/customers
 
-    // http://localhost:8080/customers/
-    @RequestMapping(value="/", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/customers")
     public List<Customer> getCustomers() {
         LOGGER.info("getCustomers()");
         return service.getCustomers();
     }
 
-    // http://localhost:8080/customers/
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Customer create(@Valid @RequestBody Customer customer) {
-        LOGGER.info("create()");
+    @PostMapping(value = "/customers")
+    public Customer create(@RequestBody Customer customer) {
+        LOGGER.info("create({})", customer.toString());
+        return customer;
+    }
 
-        return new Customer();
+    // Single item
+
+    @GetMapping("/customers/{id}")
+    public Customer getCustomer(@PathVariable int id) {
+        LOGGER.info("getCustomer({})", id);
+        return service.getCustomer(id);
     }
 }
