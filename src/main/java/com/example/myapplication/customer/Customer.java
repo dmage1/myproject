@@ -4,6 +4,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -11,8 +13,14 @@ public class Customer {
 
     private int id;
 
+    @NotNull
+    @Size(min = 2, message = "First Name should have at least 2 characters")
     private String firstName;
+
+    @NotNull
+    @Size(min = 2, message = "Last Name should have at least 2 characters")
     private String lastName;
+
     private String gender;
     private Date dob;
 

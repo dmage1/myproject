@@ -13,14 +13,14 @@ class ProductRepository {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ProductRepository.class.getName());
 
-    Product getProduct(int id) {
-        LOGGER.info("getProduct({})", id);
-        return PRODUCTS[id];
-    }
-
     List<Product> getProducts() {
         LOGGER.info("getProducts()");
         return Arrays.asList(PRODUCTS);
+    }
+
+    Product getProduct(int id) {
+        LOGGER.info("getProduct({})", id);
+        return PRODUCTS[id];
     }
 
     private static Product[] PRODUCTS = {

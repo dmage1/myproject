@@ -20,12 +20,12 @@ class OrderService {
         this.repository = repository;
     }
 
-    Order getOrder(int id) {
-        LOGGER.info("getOrder({})", id);
-        return repository.getOrder(id); }
-
     List<Order> getOrders() {
         LOGGER.info("getOrders()");
         return repository.getOrders();
     }
+
+    Order getOrder(int id) {
+        LOGGER.info("getOrder({})", id);
+        return repository.getOrder(id); }
 }

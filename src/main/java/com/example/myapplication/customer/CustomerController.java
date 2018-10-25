@@ -3,8 +3,11 @@ package com.example.myapplication.customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,6 +18,9 @@ public class CustomerController {
     @Autowired
     private CustomerService service;
 
+    @Autowired
+    private CustomerValidator validator;
+
     // Aggregate root - http://localhost:8080/customers
 
     @GetMapping("/customers")
@@ -24,9 +30,15 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/customers")
-    public Customer create(@RequestBody Customer customer) {
+    public Customer createCustomer(@RequestBody @Valid Customer customer, BindingResult result) throws NoSuchMethodException, MethodArgumentNotValidException {
         LOGGER.info("create({})", customer.toString());
-        return customer;
+
+        validator.validate(customer, result);
+
+        if (result.hasErrors()) {
+            throw new MethodArgumentNotValidException(null, result);
+        }
+        return service.create(customer);
     }
 
     // Single item

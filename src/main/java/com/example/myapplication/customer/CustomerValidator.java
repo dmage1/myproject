@@ -14,7 +14,7 @@ public class CustomerValidator implements Validator {
     }
 
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "field.required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "field.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "field.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "field.required");
     }
 }

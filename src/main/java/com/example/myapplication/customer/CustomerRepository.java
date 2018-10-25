@@ -15,17 +15,21 @@ public class CustomerRepository {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CustomerRepository.class.getName());
 
+    List<Customer> getCustomers() {
+        LOGGER.info("getCustomers()");
+        return Arrays.asList(CUSTOMERS);
+    }
+
+    Customer create(Customer customer) {
+        return customer;
+    }
+
     Customer getCustomer(int id) {
         LOGGER.info("getCustomer({})", id);
 
         Preconditions.checkArgument(id >= 0 && id <= CUSTOMERS.length - 1, "Invalid Customer Id [%s]", id);
 
         return CUSTOMERS[id];
-    }
-
-    List<Customer> getCustomers() {
-        LOGGER.info("getCustomers()");
-        return Arrays.asList(CUSTOMERS);
     }
 
     public static Customer[] CUSTOMERS = {

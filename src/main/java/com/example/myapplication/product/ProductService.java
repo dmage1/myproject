@@ -20,13 +20,13 @@ class ProductService {
         this.repository = repository;
     }
 
-    Product getProduct(int id) {
-        LOGGER.info("getProduct({})", id);
-        return repository.getProduct(id);
-    }
-
     List<Product> getProducts() {
         LOGGER.info("getProductList()");
         return repository.getProducts();
+    }
+
+    Product getProduct(int id) {
+        LOGGER.info("getProduct({})", id);
+        return repository.getProduct(id);
     }
 }

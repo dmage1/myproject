@@ -1,5 +1,6 @@
 package com.example.myapplication.config;
 
+import com.example.myapplication.customer.CustomerValidator;
 import com.example.myapplication.domain.Info;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +29,12 @@ public class AppConfig {
     @Profile("production")
     public Info info() {
         return new Info(appName, appDescription, appVersion);
+    }
+
+    @Bean
+    @Profile("development")
+    public CustomerValidator customerValidator() {
+        return new CustomerValidator();
     }
 
 }

@@ -1,6 +1,5 @@
 package com.example.myapplication.order;
 
-import com.example.myapplication.product.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -18,14 +17,14 @@ class OrderRepository {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(OrderRepository.class.getName());
 
-    Order getOrder(int id) {
-        LOGGER.info("getOrder({})", id);
-        return ORDERS[id];
-    }
-
     List<Order> getOrders() {
         LOGGER.info("getOrders()");
         return Arrays.asList(ORDERS);
+    }
+
+    Order getOrder(int id) {
+        LOGGER.info("getOrder({})", id);
+        return ORDERS[id];
     }
 
     private static Order[] ORDERS = {

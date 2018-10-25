@@ -20,13 +20,20 @@ class CustomerService {
         this.repository = repository;
     }
 
+    List<Customer> getCustomers() {
+        LOGGER.info("getCustomers()");
+        return repository.getCustomers();
+    }
+
+    Customer create(Customer customer) {
+        LOGGER.info("create({})", customer.toString());
+        return repository.create(customer);
+    }
+
     Customer getCustomer(int id) {
         LOGGER.info("getCustomer({})", id);
         return repository.getCustomer(id);
     }
 
-    List<Customer> getCustomers() {
-        LOGGER.info("getCustomers()");
-        return repository.getCustomers();
-    }
+
 }
