@@ -30,7 +30,7 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/customers")
-    public Customer createCustomer(@RequestBody @Valid Customer customer, BindingResult result) throws NoSuchMethodException, MethodArgumentNotValidException {
+    public Customer createCustomer(@RequestBody @Valid Customer customer, BindingResult result) throws MethodArgumentNotValidException {
         LOGGER.info("create({})", customer.toString());
 
         validator.validate(customer, result);

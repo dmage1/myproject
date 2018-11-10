@@ -2,6 +2,7 @@ package com.example.myapplication.platform;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.util.Properties;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
+@Ignore
 public class SystemPropertiesTest { // Java System Properties
 
     private static final int PROP_SIZE = 56;

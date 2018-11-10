@@ -16,3 +16,5 @@ include it in your application.properties, as shown in the following example:
 spring.profiles.active=dev,hsqldb
 
 You could also specify it on the command line by using the following switch: --spring.profiles.active=dev,hsqldb.
+
+Note: Ignore some tests due to mvn clean install not picking up resource files
