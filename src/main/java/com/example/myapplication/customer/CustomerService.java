@@ -12,17 +12,20 @@ class CustomerService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CustomerService.class.getName());
 
+    private CustomerMapper mapper;
     private CustomerRepository repository;
 
     @Autowired
-    CustomerService(CustomerRepository repository) {
+    CustomerService(CustomerMapper mapper, CustomerRepository repository) {
         super();
+        this.mapper = mapper;
         this.repository = repository;
     }
 
-    List<Customer> getCustomers() {
-        LOGGER.info("getCustomers()");
-        return repository.getCustomers();
+    Customer getCustomer(int id) {
+        LOGGER.info("getCustomer({})", id);
+        Customer customer = repository.getCustomer(id);
+        return mapper.map(customer);
     }
 
     Customer create(Customer customer) {
@@ -30,9 +33,11 @@ class CustomerService {
         return repository.create(customer);
     }
 
-    Customer getCustomer(int id) {
-        LOGGER.info("getCustomer({})", id);
-        return repository.getCustomer(id);
+    List<Customer> getCustomers() {
+        LOGGER.info("getCustomers()");
+        List<Customer> customers = repository.getCustomers();
+        customers.forEach(customer -> mapper.map(customer));
+        return repository.getCustomers();
     }
 
 

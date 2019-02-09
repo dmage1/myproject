@@ -26,6 +26,8 @@ import static org.mockito.Mockito.*;
 public class CustomerServiceTest {
 
     @Mock
+    CustomerMapper mapper;
+    @Mock
     CustomerRepository repository;
     @Mock
     Customer mockCustomer;
@@ -41,7 +43,8 @@ public class CustomerServiceTest {
     @Before
     public void setUp() {
         ((Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME)).addAppender(logAppender);
-        classToTest = new CustomerService(repository);
+        when(mapper.map(mockCustomer)).thenReturn(mockCustomer);
+        classToTest = new CustomerService(mapper, repository);
     }
 
     @After
