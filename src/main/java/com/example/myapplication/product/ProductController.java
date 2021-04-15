@@ -20,7 +20,7 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
-    // Aggregate root - http://localhost:8080/products
+    // Aggregate root - http://localhost:8080/products/
 
     @RequestMapping(value="/{id}", method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
     public Product getProduct(@PathVariable int id) {
